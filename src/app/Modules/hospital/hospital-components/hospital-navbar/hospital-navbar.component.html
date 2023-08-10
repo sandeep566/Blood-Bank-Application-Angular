@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #CC5546" xmlns="http://www.w3.org/1999/html">
+  <div class="container-fluid">
+    <a class="navbar-brand navbar__logo" routerLink="/hospital/home">
+      <img src="../../../assets/blood-type-b.png" alt="" height="50px" width="50px">
+      Blood Bank Application
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
+      <div class="navbar-nav">
+        <a class="nav-link px-4" aria-current="page" routerLink="/hospital/home" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }" >HOME</a>
+        <a class="nav-link px-4" routerLink="/hospital/bloodBanks" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }">BLOOD-BANKS</a>
+        <a class="nav-link px-4" routerLink="/hospital/profile" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }">PROFILE</a>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{userName}}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+            </ul>
+          </li>
+        <!-- <a class="nav-link px-4" (click)="logout()" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }">LOGOUT</a> -->
+      </div>
+    </div>
+  </div>
+</nav>
+

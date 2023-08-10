@@ -1,0 +1,48 @@
+<app-hospital-navbar></app-hospital-navbar>
+
+
+<div class="container-lg  mt-3">
+  <h1 style="text-align: center;color: #CC5546;background-color: antiquewhite;"> <img src="../../../../../assets/check.png" alt="" width="30px" height="30px" style="padding-bottom: 3px;"> Blood Requests</h1>
+  <div style="display: flex;justify-content: space-between;">
+    <button class="btn btn-link btn-lg" routerLink="/hospital/requests"><i class="bi bi-arrow-left-circle"></i> back</button>
+    <input type="text"  class="search-box mt-2" placeholder="Search By Patient Name..." id="search" [(ngModel)]="patientName">
+  </div>
+  <table class="table table-striped table-bordered my-2" id="excel-table">
+    <thead>
+      <tr>
+        <th>s.no</th>
+        <th>patient name</th>
+        <th>age</th>
+        <th>bloodGroup</th>
+        <th>priority</th>
+        <th>Quantity</th>
+        <th>supplied</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="patientName == ''">
+      <tr *ngFor="let bloodRequest of acceptedRequests; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{bloodRequest.patientName}}</td>
+        <td>{{bloodRequest.age}}</td>
+        <td>{{bloodRequest.bloodGroup}}</td>
+        <td>{{bloodRequest.priority}}</td>
+        <td>{{bloodRequest.quantity}}</td>
+        <td>{{bloodRequest.supplied}}</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="patientName != ''">
+      <tr *ngFor="let bloodRequest of searchByName(); let i = index">
+        <td>{{i+1}}</td>
+        <td>{{bloodRequest.patientName}}</td>
+        <td>{{bloodRequest.age}}</td>
+        <td>{{bloodRequest.bloodGroup}}</td>
+        <td>{{bloodRequest.priority}}</td>
+        <td>{{bloodRequest.quantity}}</td>
+        <td [ngClass]="bloodRequest.supplied == true? 'bg-success':'bg-danger'"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <button class="btn btn-success " (click)="exportexcel()"><i class="bi bi-file-arrow-down-fill"></i>Generate Excel</button>
+  </div>
+</div>

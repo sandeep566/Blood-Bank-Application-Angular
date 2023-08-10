@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="row align-items-center" style="height: 600px">
+    <div class="col-6">
+      <div class="card card-border border-black my-5">
+        <div class="card-body">
+          <h2 class="h2-signup">SignUp</h2>
+          <div>
+            <form  [formGroup]="signUpForm" (ngSubmit)="toSignUp(signUpForm.value)">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingName" placeholder="sandeep" formControlName="hospitalName">
+                  <label for="floatingInput">Hospital Name</label>
+                  <div class="form-text form-error" *ngIf="_hospitalName?.errors?.['required'] && _hospitalName?.touched">Hospital name should not be empty</div>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingAddress" placeholder="city" formControlName="address" >
+                  <label for="floatingAddress">Address</label>
+                  <div class="form-text form-error" *ngIf="_address?.errors?.['required'] && _address?.touched">Address field should not be empty</div>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="tel" class="form-control" id="floatingPhoneNumber" placeholder="9999999999" formControlName="phoneNo">
+                  <label for="floatingInput">Phone Number</label>
+                  <div class="form-text form-error" *ngIf="_phoneNo?.errors?.['required'] && _phoneNo?.touched">Phone number should not be empty</div>
+                  <div class="form-text form-error" *ngIf="_phoneNo?.errors?.['pattern'] && _phoneNo?.touched">Phone number should be 10 digits</div>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email">
+                  <label for="floatingInput">Email address</label>
+                  <div class="form-text form-error" *ngIf="_email?.errors?.['required'] && _email?.touched">Email field should not be empty</div>
+                  <div class="form-error form-text" *ngIf="_email?.errors?.['pattern'] && _email?.touched">Invalid email id</div>
+                </div>
+                <div class="form-floating mb-3">
+                  <input [type]="show_button ? 'text' : 'password'"  class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+                  <i [class]="show_button ? 'bi bi-eye' : 'bi bi-eye-slash'" (click)="showPassword()" style="position: absolute; right: 10px; top: 20%;"></i>
+                  <label for="floatingPassword">Password</label>
+                  <div *ngIf="_password?.invalid && (_password?.touched || _password?.dirty)">
+                    <div class="form-text form-error" *ngIf="_password?.errors?.['required'] ">Password required</div>
+                    <div class="form-text form-error" *ngIf="_password?.errors?.['pattern']">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</div>
+                  </div>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control" id="floatingConfirmPassword" placeholder="Password" formControlName="confirmPassword">
+                  <label for="floatingConfirmPassword">Confirm Password</label>
+                  <div class="form-text form-error" *ngIf="passwordMatchError">
+                    Password does not match
+                  </div>
+                </div>
+                <div class="mx-auto" style="width: 80%;">
+                  <button type="submit" class="btn btn-danger mb-2 mt-2 " style="width: 100%;" [disabled]="signUpForm.invalid" >Signup</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6" style="height: 500px">
+      <div>
+        <h1 class="bg-body-secondary align-items-center p-3" style="border-radius: 8px;text-align: center;color: indianred">New Here ? Signup</h1>
+        <img Src="https://www.geetanjalihospital.co.in/images/blood-bank.jpg" width="100%" alt="bb-2">
+      </div>
+    </div>
+  </div>
+</div>
+<!--<footer style="background-color: indianred;display: block;margin-top: 0px;padding: 0.5rem">-->
+<!--  <p style="text-align: center">©2019 BloodBank.com - All rights reserved.</p>-->
+<!--</footer>-->

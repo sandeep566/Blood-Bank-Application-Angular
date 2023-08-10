@@ -1,0 +1,31 @@
+#myTextBox{
+  width: 40px;
+  height: 35px;
+  border-radius: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+#size{
+  margin-right: 2px;
+  width: 70px;
+  height: 35px;
+  border-radius: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+#sort{
+  margin-right: 2px;
+  width: 120px;
+  height: 37px;
+  border-radius: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+#search{
+  width: 50%;
+  border-radius: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+

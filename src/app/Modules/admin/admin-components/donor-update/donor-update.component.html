@@ -1,0 +1,76 @@
+ <div class="container">
+    <div class="card card-border border-black mb-4" style="width: 100%;">
+      <div class="card-header">
+        <button type="button" class="btn-close align-items-end" aria-label="Close" style="float: right" (click)="closeUpdate()"></button>
+        <h3 style="text-align: center;color: #CC5546;">Update Donor</h3>
+      </div>
+      <div class="card-body">
+<!--        <div class="h2-login mb-5">-->
+<!--          <h2 style="text-align: center;color: #CC5546;background-color: antiquewhite">Update Donor Details</h2>-->
+<!--        </div>-->
+        <div>
+          <form [formGroup]="myForm" (ngSubmit)="updateDonor()">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="floatingInput" placeholder="350"  formControlName="donorName">
+              <label for="floatingInput">Donor Name</label>
+              <div *ngIf="myForm.controls['donorName'].invalid && (myForm.controls['donorName'].dirty || myForm.controls['donorName'].touched)" class="text-danger form-error">
+                Donor Name is required.
+              </div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="floatingInput1" placeholder="350"  formControlName="age">
+              <label for="floatingInput1">age</label>
+              <div *ngIf="myForm.controls['age'].invalid && (myForm.controls['age'].dirty || myForm.controls['age'].touched)"
+                   class="text-danger form-error">
+                Age must be between 18 and 65.
+              </div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="floatingInput2" placeholder="350"  formControlName="aadhaarNo">
+              <label for="floatingInput2">Aadhaar No</label>
+              <div *ngIf="myForm.controls['aadhaarNo'].invalid && (myForm.controls['aadhaarNo'].dirty || myForm.controls['aadhaarNo'].touched)"
+                   class="text-danger form-error">
+                Invalid Aadhaar Number (must be 12 digits).
+              </div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="floatingInput3" placeholder="350" formControlName="address">
+              <label for="floatingInput3">Address</label>
+              <div *ngIf="myForm.controls['address'].invalid && (myForm.controls['address'].dirty || myForm.controls['address'].touched)"
+                   class="text-danger form-error">
+                Address is required.
+              </div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="floatingInput4" placeholder="350"  formControlName="phoneNo">
+              <label for="floatingInput4">Phone Number</label>
+              <div *ngIf="myForm.controls['phoneNo'].invalid && (myForm.controls['phoneNo'].dirty || myForm.controls['phoneNo'].touched)"
+                   class="text-danger form-error">
+                Invalid Phone Number (must be 10 digits and start with 7, 8, or 9).
+              </div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="floatingInput5" placeholder="350"   formControlName="donationQuantity">
+              <label for="floatingInput5">Donation Quantity</label>
+              <div *ngIf="myForm.controls['donationQuantity'].invalid && (myForm.controls['donationQuantity'].dirty || myForm.controls['donationQuantity'].touched)"
+                   class="text-danger form-error">
+                Donation Quantity must be less than or equal to 450.
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label for="exampleFormControlSelect1">Blood Group:</label>
+              <select class="form-select form-select-lg mb-3" id="exampleFormControlSelect1"  formControlName="bloodGroup">
+                <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+              </select>
+              <div *ngIf="myForm.controls['bloodGroup'].invalid && (myForm.controls['bloodGroup'].dirty || myForm.controls['bloodGroup'].touched)" class="text-danger form-error">
+                Blood Group is required.
+              </div>
+            </div>
+            <div class="mt-3" style="width: 100%;display: grid">
+              <button type="submit" class="btn btn-danger" [disabled]="myForm.invalid">update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

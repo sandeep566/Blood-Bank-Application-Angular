@@ -1,0 +1,105 @@
+<app-navbar></app-navbar>
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+  <div class="row align-items-center" style="height: 500px">
+    <div class="col-8 ">
+      <div>
+        <img width="55%" src="../../../assets/hospital.png" alt="">
+      </div>
+    </div>
+    <div class="col-4">
+      <div>
+        <div class="card card-border border-black">
+          <div class="card-body">
+            <div class="h2-login">
+              <h2>LOGIN</h2>
+            </div>
+            <div>
+              <form [formGroup]="loginForm" (ngSubmit)="userLogin(loginForm.value)">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="username">
+                  <label for="floatingInput">Email address</label>
+                  <div class="form-text form-error" *ngIf="email?.errors?.['required'] && email?.touched">Email field should not be empty</div>
+                  <div class="form-text form-error" *ngIf="email?.errors?.['pattern'] && email?.touched">Invalid email id</div>
+                </div>
+                <div class="form-floating mb-3">
+                  <input [type]="show_button ? 'text' : 'password'" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+                  <i [class]="show_button ? 'bi bi-eye' : 'bi bi-eye-slash'" (click)="showPassword()" style="position: absolute; right: 10px; top: 20%;"></i>
+                  <label for="floatingPassword">Password</label>
+                  <div class="form-text form-error" *ngIf="_password?.errors?.['required'] && _password?.touched">Password field should not be empty</div>
+                  <div class="my-3" style="float:right;">
+                    <a class="btn btn-link" data-bs-toggle="modal" data-bs-target="#confirmEmail">forget Password?</a>
+                  </div>
+                </div>
+                <div class="mt-3" style="width: 100%;display: grid">
+                  <button type="submit" class="btn btn-danger" [disabled]="loginForm.invalid">login</button>
+                </div>
+              </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirmEmail" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Confirm Email</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="passwordForm">
+          <div class="form-floating mb-3">
+            <input #userName type="email" class="form-control" id="floatingInput1" placeholder="name@example.com" formControlName="userName">
+            <label for="floatingInput">Email address</label>
+            <div class="form-text form-error" *ngIf="userEmail?.errors?.['required'] && userEmail?.touched">Email field should not be empty</div>
+            <div class="form-text form-error" *ngIf="userEmail?.errors?.['pattern'] &&userEmail?.touched">Invalid email id</div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" (click)="getOtp(userName.value)" [disabled]="userEmail?.invalid">send otp</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Reset Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="passwordForm">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingOtp" formControlName="otp" readonly>
+          </div>
+          <div class="form-floating mb-3">
+            <input [type]="show_button ? 'text' : 'password'" class="form-control" id="floatingPassword1" placeholder="Password" formControlName="userPassword">
+            <i [class]="show_button ? 'bi bi-eye' : 'bi bi-eye-slash'" (click)="showPassword()" style="position: absolute; right: 10px; top: 20%;"></i>
+            <label for="floatingPassword">Password</label>
+            <div *ngIf="userPassword?.invalid && (userPassword?.touched || userPassword?.dirty)">
+              <div class="form-text form-error" *ngIf="userPassword?.errors?.['required'] ">Password required</div>
+              <div class="form-text form-error" *ngIf="userPassword?.errors?.['pattern']">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingConfirmPassword" placeholder="Password" formControlName="confirmPassword">
+            <label for="floatingConfirmPassword">Confirm Password</label>
+            <div class="form-text form-error" *ngIf="passwordMatchError">
+              Password does not match
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" (click)="resetPassword(passwordForm.value)">Reset</button>
+      </div>
+    </div>
+  </div>
+</div>

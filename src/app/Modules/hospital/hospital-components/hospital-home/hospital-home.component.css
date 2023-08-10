@@ -1,0 +1,9 @@
+.h2-login{
+  text-align: center;
+  color: indianred;
+  background-color: antiquewhite;
+  margin-bottom: 30px;
+}
+.form-error{
+  font-size: small;
+}

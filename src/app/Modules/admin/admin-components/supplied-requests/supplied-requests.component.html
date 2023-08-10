@@ -1,0 +1,31 @@
+<app-admin-navbar></app-admin-navbar>
+
+
+<div class="container  my-2">
+  <button class="btn btn-link btn-lg" routerLink="/blood-bank/bloodRequests"><i class="bi bi-arrow-left-circle"></i> back</button>
+  <h1 style="text-align: center;color: #CC5546;background-color: antiquewhite">Supplied Requests</h1>
+  <div>
+    <table class="table table-bordered table-striped" id="excel-table">
+      <thead>
+      <tr>
+        <th>s.no</th>
+        <th>hospital name</th>
+        <th>quantity</th>
+        <th>blood group</th>
+        <th>supplied date</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let suppliedRequest of suppliedRequests; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{suppliedRequest.hospital.hospitalName}}</td>
+          <td>{{suppliedRequest.quantity}}</td>
+          <td>{{suppliedRequest.bloodGroup}}</td>
+          <td>{{suppliedRequest.dateTime | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button class="btn btn-success" (click)="exportexcel()"><i class="bi bi-file-arrow-down-fill"></i>Generate Excel</button>
+    </div>
+

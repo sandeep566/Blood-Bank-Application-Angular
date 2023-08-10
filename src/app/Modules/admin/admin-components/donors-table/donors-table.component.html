@@ -1,0 +1,111 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container">
+  <div class="row">
+    <div class="text-center mt-4" style="color: #CC5546;background-color: antiquewhite">
+      <h1>Donor Details</h1>
+    </div>
+    <div class="btn-group my-2 " role="group" aria-label="Basic checkbox toggle button group">
+      <div *ngFor="let item of checkboxList">
+        <input type="checkbox" class="btn-check" [id]="item.value" [(ngModel)]="item.checked" (change)="updateCheckedValues()">
+        <label class="btn btn-outline-danger" [for]="item.value">{{ item.label }}</label>
+      </div>
+    </div>
+    <div class="mt-2" style="display: flex; justify-content: center;">
+      <input type="text" [(ngModel)]="search" (keyup)="searchByName()" class="search-box mt-2" placeholder="Search By Donor Name..." id="search">
+    </div>
+    <div  [ngClass]="updatePopUp?'col-8 mt-3':'col-12 mt-3'">
+      <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+          <th>donor name</th>
+          <th>age</th>
+          <th>blood group</th>
+          <th>donated quantity</th>
+          <th>phoneNo</th>
+          <th>action</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="search == ''">
+        <tr *ngFor="let donor of donorsPages;">
+          <td>{{donor.donorName}}</td>
+          <td>{{donor.age}}</td>
+          <td>{{donor.bloodGroup}}</td>
+          <td>{{donor.donationQuantity}}</td>
+          <td>{{donor.phoneNo}}</td>
+          <td>
+            <button class="btn btn-outline-danger mx-2" (click)="updateDonor(donor)">update</button>
+            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getDonor(donor.donorId)">delete</button>
+          </td>
+        </tr>
+        </tbody>
+        <tbody *ngIf="search != ''">
+          <tr *ngFor="let donor of searchByName();">
+            <td>{{donor.donorName}}</td>
+            <td>{{donor.age}}</td>
+            <td>{{donor.bloodGroup}}</td>
+            <td>{{donor.donationQuantity}}</td>
+            <td>{{donor.phoneNo}}</td>
+            <td>
+              <button class="btn btn-outline-danger mx-2" (click)="updateDonor(donor)">update</button>
+              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getDonor(donor.donorId)">delete</button>
+            </td>
+          </tr>
+          </tbody>
+      </table>
+      <div style="display: flex; justify-content: end;">
+        <select class="form-select form-select-sm" aria-label="Small select example" id="sort" [(ngModel)]="sort" (ngModelChange)="sendCurrentPage(0)">
+          <option value="">Sort By</option>
+          <option value="age">by age</option>
+          <option value="donationQuantity">by quantity</option>
+        </select>
+        <select class="form-select form-select-sm" aria-label="Small select example" id="size" [(ngModel)]="size" (ngModelChange)="sendCurrentPage(0)">
+          <option value=5>5</option>
+          <option value=10>10</option>
+          <option value=15>15</option>
+        </select>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-end">
+            <li class="page-item">
+              <button class="page-link text-danger" aria-label="Previous" [disabled]="pageNumbers[0]==1" (click)="changeValuesBack()">
+                <span aria-hidden="true">&laquo;</span>
+              </button>
+            </li>
+              <li class="page-item mx-1" *ngFor="let page of pageNumbers;let i = index">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                  <input type="radio" class="btn-check" name="btnradio" [id]="i" autocomplete="off" [checked]="i % 3==0" (click)="sendCurrentPage(page-1)">
+                  <label class="btn btn-outline-danger" [for]="i">{{page}}</label>
+                </div>
+              </li>
+            <li class="page-item">
+              <button class="page-link text-danger" [disabled]="pageNumbers[-1]==totalPages || totalPages==2" aria-label="Next" (click)="changeValuesFront()">
+                <span aria-hidden="true">&raquo;</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div *ngIf="updatePopUp" [ngClass]="updatePopUp?'col-4 mt-3':''">
+      <app-donor-update></app-donor-update>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3 class="text-danger" style="background-color: antiquewhite">Are you sure ?</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="deleteDonor(donorId)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
