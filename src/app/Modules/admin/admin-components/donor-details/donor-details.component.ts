@@ -21,6 +21,8 @@ export class DonorDetailsComponent implements OnInit{
       .subscribe(
         (res) =>{
           this.donors = res;
+          this.donors.sort((a, b) => a.donorId - b.donorId);
+          this.donors = this.donors.slice(-10);
         }
       )
   }

@@ -69,7 +69,7 @@ export class DonorsTableComponent implements OnInit{
   isLast:boolean;
   pageNumbers:number[] = [];
 
-  size:number=5;
+  // size:number=5;
 
   sort:string = "";
 
@@ -128,7 +128,7 @@ export class DonorsTableComponent implements OnInit{
   }
 
   sendCurrentPage(pageNo:number){
-    this.donorService.getNextPage(pageNo,this.size,this.sort)
+    this.donorService.getNextPage(pageNo,this.sort)
       .subscribe(
         res => {
           this.donorsPages = res.content;

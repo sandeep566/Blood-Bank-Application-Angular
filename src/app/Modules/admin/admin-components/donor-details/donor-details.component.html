@@ -2,15 +2,15 @@
   <table class="table table-striped table-bordered">
     <thead>
     <tr>
-      <th>s.no</th>
-      <th>Name</th>
-      <th>age</th>
-      <th>blood group</th>
-      <th>donated quantity(ml)</th>
+      <th>S.NO</th>
+      <th>NAME</th>
+      <th>AGE</th>
+      <th>BLOOD GROUP</th>
+      <th>DONATED QUANTITY(ml)</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let donor of donors.slice().slice(-10); let i = index">
+    <tr *ngFor="let donor of donors; let i = index">
       <td>{{i + 1}}</td>
       <td>{{donor.donorName}}</td>
       <td>{{donor.age}}</td>
@@ -31,6 +31,16 @@
     <div class="square bg-danger">
       <h3 class="text-center pt-3 text-opacity-100 text-white">{{bloodCount}}</h3>
       <h3 class="text-center text-white-50 ">Blood Units Collected</h3>
+    </div>
+  </div>
+</div>
+<div class="container ">
+  <div class="row">
+    <div>
+      <video width="640" height="360" controls>
+        <source src="../../../assets/352209545_3430268487247914_5539987921722753511_n.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
 </div>

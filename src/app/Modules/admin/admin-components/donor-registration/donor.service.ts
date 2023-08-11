@@ -58,8 +58,8 @@ export class DonorService {
     return this.http.get<PageModel>("http://localhost:2323/donor/paginationAndSortingDonors/"+this.userId);
   }
 
-  getNextPage(currentPage:number,size:number,sort:string){
-    return this.http.get<PageModel>("http://localhost:2323/donor/paginationAndSortingDonors/"+this.userId + "?pageNo="+currentPage+"&pageSize="+size+"&sortBy="+sort);
+  getNextPage(currentPage:number,sort:string){
+    return this.http.get<PageModel>("http://localhost:2323/donor/paginationAndSortingDonors/"+this.userId + "?pageNo="+currentPage+"&sortBy="+sort);
   }
 
   updateDonorById(updateDonorForm:any){
