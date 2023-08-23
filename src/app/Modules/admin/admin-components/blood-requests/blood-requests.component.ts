@@ -44,11 +44,11 @@ export class BloodRequestsComponent {
 
 
   searchByName(){
-    this.bloodRequestService.getAllBloodRequests()
-    .subscribe(
-      res => this.allBloodRequests = res
-    )
-    return this.allBloodRequests.filter(request => request.hospital.hospitalName.includes(this.searchTextControl));
+    // this.bloodRequestService.getAllBloodRequests()
+    // .subscribe(
+    //   res => this.allBloodRequests = res
+    // )
+    return this.bloodRequests.filter(request => request.hospital.hospitalName.includes(this.searchTextControl));
   }
 
 
@@ -72,7 +72,7 @@ export class BloodRequestsComponent {
     this.bloodRequestService.getPageRequest(requestedPage,this.size,this.sort)
     .subscribe(
       res => {
-        this.bloodRequests = res.content
+        this.bloodRequests = res.content;
         this.totalPages = res.totalPages
       }
     )
