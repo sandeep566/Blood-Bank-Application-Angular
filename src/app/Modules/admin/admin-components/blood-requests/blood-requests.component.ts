@@ -78,7 +78,7 @@ export class BloodRequestsComponent {
     )
   }
 
- 
+
 
 
   // getFilteredSuppliedRequests(): Observable<BloodRequestModel[]> {
@@ -106,6 +106,7 @@ export class BloodRequestsComponent {
         console.log(res)
         this.errorMessage = null;
         this.router.navigate(['/blood-bank/suppliedRequests'])
+        location.reload();
       },(error)=> {
         // clearTimeout(this.messageTimeOut)
         this.click = true;

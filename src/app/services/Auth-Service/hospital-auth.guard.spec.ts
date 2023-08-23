@@ -3,7 +3,7 @@ import { CanActivateFn } from '@angular/router';
 
 import { hospitalAuthGuard } from './hospital-auth.guard';
 
-describe('roleManagerGuard', () => {
+describe('HospitalAuthGuard', () => {
   const executeGuard: CanActivateFn = (...guardParameters) =>
       TestBed.runInInjectionContext(() => hospitalAuthGuard(...guardParameters));
 

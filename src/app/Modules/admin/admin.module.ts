@@ -13,6 +13,7 @@ import { DonorsTableComponent } from './admin-components/donors-table/donors-tab
 import { DonorUpdateComponent } from './admin-components/donor-update/donor-update.component';
 import { ProfileComponent } from './admin-components/profile/profile.component';
 import { SuppliedRequestsComponent } from './admin-components/supplied-requests/supplied-requests.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -39,6 +40,7 @@ import { SuppliedRequestsComponent } from './admin-components/supplied-requests/
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule
     ]
 })
 export class AdminModule { }

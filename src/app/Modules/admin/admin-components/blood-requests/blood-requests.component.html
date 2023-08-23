@@ -44,7 +44,9 @@
           <td>{{bloodRequest.age}}</td>
           <td>{{bloodRequest.quantity}}</td>
           <td>{{bloodRequest.bloodGroup}}</td>
-          <td>{{bloodRequest.supplied}}</td>
+          <!-- <td>{{bloodRequest.supplied}}</td> -->
+          <td *ngIf="bloodRequest.supplied == true"><img src="../../../../../assets/check.png" width="20px" height="20px"></td>
+          <td *ngIf="bloodRequest.supplied == false"><img src="../../../../../assets/reject.png" width="25px" height="25px"></td>
           <td [ngClass]="bloodRequest.priority == 'HIGH'? 'text-danger':''">{{bloodRequest.priority}}</td>
           <td><button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onSupply(bloodRequest)">supply</button></td>
         </tr>

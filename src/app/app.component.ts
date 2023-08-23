@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
 
   constructor(private jwtService:JWTTokenService) {
   }
+  
   role:string
   forAdmin(){
     if(this.jwtService.isAdmin()){

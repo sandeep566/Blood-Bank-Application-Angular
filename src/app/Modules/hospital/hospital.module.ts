@@ -8,6 +8,7 @@ import { BloodBankTableComponent } from './hospital-components/blood-bank-table/
 import { HospitalProfileComponent } from './hospital-components/hospital-profile/hospital-profile.component';
 import { HospitalRequestsComponent } from './hospital-components/hospital-requests/hospital-requests.component';
 import { AcceptedRequestsComponent } from './hospital-components/accepted-requests/accepted-requests.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -24,7 +25,8 @@ import { AcceptedRequestsComponent } from './hospital-components/accepted-reques
     CommonModule,
     HospitalRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class HospitalModule { }
