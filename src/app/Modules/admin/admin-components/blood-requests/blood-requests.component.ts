@@ -1,11 +1,7 @@
-import { SuppliedRequest } from './../../../../Model/SuppliedRequest';
 import { Component } from '@angular/core';
-import { BloodRequestService } from './blood-request.service';
-import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
-import { Observable, combineLatest, filter, map, startWith } from 'rxjs';
 import { Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
-import { Donor } from 'src/app/Model/DonorModel';
+import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
+import { BloodRequestService } from './blood-request.service';
 
 
 @Component({

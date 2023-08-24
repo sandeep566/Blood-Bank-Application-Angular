@@ -1,5 +1,4 @@
 import { BloodBankProfile } from './../../../../Model/BloodBankProfile';
-import { BloodBankModel } from './../../../../Model/BloodBankModel';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '../admin-home/admin.service';

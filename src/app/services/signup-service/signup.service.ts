@@ -10,7 +10,6 @@ import {Router} from "@angular/router";
 export class SignupService {
 
   constructor(private httpClient: HttpClient,
-              private jwtService:JWTTokenService,
               private router:Router) { }
 
   message:string|null;

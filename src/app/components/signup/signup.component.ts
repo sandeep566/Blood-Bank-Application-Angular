@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CustomValidators} from "./CustomValidators";
-import {LoginComponent} from "../login/login.component";
-import {SignupService} from "../../services/signup-service/signup.service";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { SignupService } from "../../services/signup-service/signup.service";
+import { CustomValidators } from "./CustomValidators";
 
 @Component({
   selector: 'app-signup',

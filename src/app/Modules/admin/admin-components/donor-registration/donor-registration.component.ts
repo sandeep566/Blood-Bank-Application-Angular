@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AdminService} from "../admin-home/admin.service";
-import {DonorService} from "./donor.service";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { DonorService } from "./donor.service";
 
 @Component({
   selector: 'app-donor-registration',

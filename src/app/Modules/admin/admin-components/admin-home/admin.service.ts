@@ -1,11 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {JWTTokenService} from "../../../../services/Jwt-Service/jwttoken.service";
-import {BloodQuantityLevel} from "../../../../Model/BloodQuantityLevel";
-import {first, firstValueFrom} from "rxjs";
-import {catchError} from "rxjs/operators";
-import { BloodBankModel } from 'src/app/Model/BloodBankModel';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { firstValueFrom } from "rxjs";
 import { BloodBankProfile } from 'src/app/Model/BloodBankProfile';
+import { BloodQuantityLevel } from "../../../../Model/BloodQuantityLevel";
+import { JWTTokenService } from "../../../../services/Jwt-Service/jwttoken.service";
 
 
 @Injectable({

@@ -1,10 +1,10 @@
-import {Component, ViewChild, ElementRef, AfterViewInit, OnInit} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import {AdminService} from "../admin-home/admin.service";
-import {BloodQuantityLevel} from "../../../../Model/BloodQuantityLevel";
-import {Observable, interval, map} from "rxjs";
-import { BloodRequestService } from '../blood-requests/blood-request.service';
+import { map } from "rxjs";
 import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
+import { BloodQuantityLevel } from "../../../../Model/BloodQuantityLevel";
+import { AdminService } from "../admin-home/admin.service";
+import { BloodRequestService } from '../blood-requests/blood-request.service';
 
 @Component({
   selector: 'app-bar-chart',
