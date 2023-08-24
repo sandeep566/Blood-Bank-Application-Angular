@@ -27,7 +27,9 @@
               <td>{{i + 1}}</td>
               <td>{{bloodRequest.hospital.hospitalName}}</td>
               <td>{{bloodRequest.quantity}}</td>
-              <td>{{bloodRequest.supplied}}</td>
+              <!-- <td>{{bloodRequest.supplied}}</td> -->
+              <td *ngIf="bloodRequest.supplied == false">No</td>
+              <td *ngIf="bloodRequest.supplied == true">Yes</td>
               <td>{{bloodRequest.bloodGroup}}</td>
               <td [ngClass]="bloodRequest.priority == 'HIGH'? 'text-danger':''">{{bloodRequest.priority}}</td>
             </tr>

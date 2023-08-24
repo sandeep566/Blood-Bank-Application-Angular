@@ -61,7 +61,9 @@ export class HospitalService {
 
 
   deleteRequest(id:number){
-    return this.http.delete("http://localhost:2323/bloodRequest/delete/"+id);
+    return this.http.delete("http://localhost:2323/bloodRequest/delete/"+id, {
+      responseType:'text'
+    });
   }
 }
 

@@ -60,7 +60,7 @@
             <div class="form-group mb-3">
               <label for="exampleFormControlSelect1">Blood Group:</label>
               <select class="form-select form-select-lg mb-3" id="exampleFormControlSelect1"  formControlName="bloodGroup">
-                <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+                <option *ngFor="let option of options" [value]="option.value" disabled>{{ option.label }}</option>
               </select>
               <div *ngIf="myForm.controls['bloodGroup'].invalid && (myForm.controls['bloodGroup'].dirty || myForm.controls['bloodGroup'].touched)" class="text-danger form-error">
                 Blood Group is required.

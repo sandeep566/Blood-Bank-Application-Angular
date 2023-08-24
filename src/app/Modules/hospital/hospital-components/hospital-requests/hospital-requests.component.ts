@@ -3,6 +3,7 @@ import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
 import { HospitalService } from '../hospital.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-hospital-requests',
   templateUrl: './hospital-requests.component.html',
@@ -14,6 +15,9 @@ export class HospitalRequestsComponent implements OnInit{
     // this.getAllRequests();
     this.getPageRequests(this.requestedPage);
   }
+
+
+  alert = false;
 
 
 
@@ -86,7 +90,19 @@ export class HospitalRequestsComponent implements OnInit{
   deleteRequest(id:number){
     this.hospitalService.deleteRequest(id)
     .subscribe(
-      res => console.log(res)
+      res => {
+        console.log(res)
+        this.alert = true;
+
+        this.bloodRequests.splice(this.bloodRequests.indexOf(this.bloodRequests.find((value)=>value.bloodRequestId===id) as BloodRequestModel),1);
+        if( this.bloodRequests.length %  this.size == 0){
+          this.getPageRequests(this.requestedPage - 1)
+          this.requestedPage -= 1;
+        }
+        setTimeout(() =>{
+          this.alert = false
+        },3000)
+      }
     )
   }
 

@@ -6,6 +6,7 @@ import {DonorUpdateComponent} from "./admin-components/donor-update/donor-update
 import { ProfileComponent } from './admin-components/profile/profile.component';
 import { BloodRequestsComponent } from './admin-components/blood-requests/blood-requests.component';
 import { SuppliedRequestsComponent } from './admin-components/supplied-requests/supplied-requests.component';
+import { AdminSignUpFormComponent } from './admin-components/admin-sign-up-form/admin-sign-up-form.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,9 @@ const routes: Routes = [
   },
   {
     path:'suppliedRequests', component:SuppliedRequestsComponent
+  },
+  {
+    path:'signup', component:AdminSignUpFormComponent
   }
 ];
 

@@ -7,3 +7,12 @@
 .form-error{
   font-size: small;
 }
+h1{
+  text-align: center;
+  color: #CC5546;
+  background-color: antiquewhite;
+}
+#hos-img{
+  display: flex;
+  justify-content: center;
+}

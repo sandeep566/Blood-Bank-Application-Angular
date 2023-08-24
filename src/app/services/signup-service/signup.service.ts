@@ -16,8 +16,6 @@ export class SignupService {
   message:string|null;
 
   signUp(data:any){
-
-
     const phoneNo = Number(data.phoneNo);
     const {confirmPassword , ...newData} = data;
     newData.phoneNo = phoneNo;
