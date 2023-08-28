@@ -8,7 +8,7 @@ import { AdminService } from '../../bloodbank-services/admin.service';
 
 @Component({
   selector: 'app-bar-chart',
-  templateUrl: 'bar-chart.component.html'
+  templateUrl: 'bar-chart.component.html',
 })
 export class BarChartComponent implements AfterViewInit {
   @ViewChild('barChartCanvas') private barChartCanvasRef: ElementRef;

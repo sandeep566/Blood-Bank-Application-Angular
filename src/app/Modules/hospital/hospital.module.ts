@@ -9,6 +9,7 @@ import { HospitalProfileComponent } from './hospital-components/hospital-profile
 import { HospitalRequestsComponent } from './hospital-components/hospital-requests/hospital-requests.component';
 import { AcceptedRequestsComponent } from './hospital-components/accepted-requests/accepted-requests.component';
 import { RouterModule } from '@angular/router';
+import { AlertComponent } from './hospital-components/alert/alert.component';
 
 
 
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     BloodBankTableComponent,
     HospitalProfileComponent,
     HospitalRequestsComponent,
-    AcceptedRequestsComponent
+    AcceptedRequestsComponent,
+    AlertComponent,
   ],
   imports: [
     CommonModule,
