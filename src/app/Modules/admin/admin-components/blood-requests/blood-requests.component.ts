@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
-import { BloodRequestService } from './blood-request.service';
+import { BloodRequestService } from '../../bloodbank-services/blood-request.service';
 
 
 @Component({

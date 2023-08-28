@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {JWTTokenService} from "../Jwt-Service/jwttoken.service";
 import {Router} from "@angular/router";
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -19,7 +19,7 @@ export class SignupService {
     const {confirmPassword , ...newData} = data;
     newData.phoneNo = phoneNo;
     console.log(newData)
-    this.httpClient.post("http://localhost:2323/hospital/add", newData)
+    this.httpClient.post(environment.apiUrl+"/hospital/add", newData)
       .subscribe(
         () => {
           // Handle successful response

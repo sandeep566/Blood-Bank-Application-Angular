@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HospitalProfile } from 'src/app/Model/HospitalProfile';
-import { HospitalService } from '../hospital.service';
+import { HospitalService } from '../../hospital-services/hospital.service';
 import { JWTTokenService } from 'src/app/services/Jwt-Service/jwttoken.service';
 
 @Component({

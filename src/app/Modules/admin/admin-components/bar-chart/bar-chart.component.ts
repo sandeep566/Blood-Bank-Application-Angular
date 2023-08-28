@@ -3,8 +3,8 @@ import { Chart, registerables } from 'chart.js';
 import { map } from "rxjs";
 import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
 import { BloodQuantityLevel } from "../../../../Model/BloodQuantityLevel";
-import { AdminService } from "../admin-home/admin.service";
-import { BloodRequestService } from '../blood-requests/blood-request.service';
+import { BloodRequestService } from '../../bloodbank-services/blood-request.service';
+import { AdminService } from '../../bloodbank-services/admin.service';
 
 @Component({
   selector: 'app-bar-chart',

@@ -5,6 +5,7 @@ import {of, throwError} from "rxjs";
 import {JWTTokenService} from "../Jwt-Service/jwttoken.service";
 import {LocalStorageService} from "../Jwt-Service/local-storage.service";
 import {Router} from "@angular/router";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class LoginService {
               private router:Router) { }
 
   login(data: any) {
-    this.httpClient.post<{ jwtToken:string }>("http://localhost:2323/user/authenticate",data)
+    this.httpClient.post<{ jwtToken:string }>(environment.apiUrl+"/user/authenticate",data)
       .pipe(
         catchError((error) => {
           // Handle error
@@ -45,11 +46,11 @@ export class LoginService {
   resetPassword(passwordForm:any){
     const{confirmPassword,...newObj} = passwordForm;
     console.log(newObj)
-    return this.httpClient.put("http://localhost:2323/user/reset",newObj,{responseType:'text'});
+    return this.httpClient.put(environment.apiUrl+"/user/reset",newObj,{responseType:'text'});
   }
 
 
   getOtp(userName:string){
-    return this.httpClient.get<{username:string, otp:string}>("http://localhost:2323/user/checkUsername/"+userName);
+    return this.httpClient.get<{username:string, otp:string}>(environment.apiUrl+"/user/checkUsername/"+userName);
   }
 }

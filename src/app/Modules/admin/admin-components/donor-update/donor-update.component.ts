@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DonorService} from "../donor-registration/donor.service";
+import {DonorService} from "../../bloodbank-services/donor.service";
 import {DonorsTableComponent} from "../donors-table/donors-table.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
@@ -60,18 +60,6 @@ export class DonorUpdateComponent implements OnInit{
 
 
 
-
-  //  donor = this.donorTable.donorToUpdate;
-  // updateForm = {
-  //   donorId: this.donor.donorId,
-  //   donorName: this.donor.donorName,
-  //   age: this.donor.age,
-  //   aadhaarNo: String(this.donor.aadhaarNo),
-  //   address: this.donor.address,
-  //   phoneNo: String(this.donor.phoneNo),
-  //   donationQuantity: this.donor.donationQuantity,
-  //   bloodGroup: this.donor.bloodGroup
-  // }
 
   updateDonor(){
     this.donorService.updateDonorById(this.myForm.value);

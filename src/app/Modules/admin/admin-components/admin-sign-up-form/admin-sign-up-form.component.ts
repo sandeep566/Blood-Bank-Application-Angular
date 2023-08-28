@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/components/signup/CustomValidators';
-import { AdminService } from '../../admin.service';
+import { AdminService } from '../../bloodbank-services/admin.service';
 
 @Component({
   selector: 'app-admin-sign-up-form',

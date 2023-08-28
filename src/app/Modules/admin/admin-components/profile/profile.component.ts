@@ -1,7 +1,7 @@
 import { BloodBankProfile } from './../../../../Model/BloodBankProfile';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AdminService } from '../admin-home/admin.service';
+import { AdminService } from '../../bloodbank-services/admin.service';
 
 @Component({
   selector: 'app-profile',

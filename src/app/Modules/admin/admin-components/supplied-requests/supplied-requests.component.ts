@@ -1,5 +1,5 @@
 import { SuppliedRequest } from 'src/app/Model/SuppliedRequest';
-import { BloodRequestService } from './../blood-requests/blood-request.service';
+import { BloodRequestService } from '../../bloodbank-services/blood-request.service';
 import { Component } from '@angular/core';
 import * as XLSX from 'xlsx';
 
@@ -12,7 +12,7 @@ import * as XLSX from 'xlsx';
 export class SuppliedRequestsComponent {
 
   fileName= 'supplyReport.xlsx';
-  
+
   constructor(private bloodRequestService:BloodRequestService){
     this.getSuppliedRequests();
   }

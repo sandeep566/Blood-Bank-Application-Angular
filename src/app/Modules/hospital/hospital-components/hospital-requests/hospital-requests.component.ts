@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
-import { HospitalService } from '../hospital.service';
+import { HospitalService } from '../../hospital-services/hospital.service';
 import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
 
 

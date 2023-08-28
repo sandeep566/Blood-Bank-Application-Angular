@@ -1,5 +1,3 @@
-
-import {AdminService} from "./admin.service";
 import {Component} from "@angular/core";
 
 @Component({
@@ -9,7 +7,7 @@ import {Component} from "@angular/core";
 })
 export class AdminHomeComponent{
 
-  constructor(private adminService:AdminService) {
+  constructor() {
   }
 
 

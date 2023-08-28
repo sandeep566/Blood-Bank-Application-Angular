@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HospitalService } from '../hospital.service';
+import { HospitalService } from '../../hospital-services/hospital.service';
 import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HospitalService } from '../hospital.service';
+import { HospitalService } from '../../hospital-services/hospital.service';
 import { BloodBankModel } from 'src/app/Model/BloodBankModel';
 
 @Component({

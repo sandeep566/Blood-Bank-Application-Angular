@@ -1,5 +1,5 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import {DonorService} from "../donor-registration/donor.service";
+import {DonorService} from "../../bloodbank-services/donor.service";
 import {Donor} from "../../../../Model/DonorModel";
 
 
