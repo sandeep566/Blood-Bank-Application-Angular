@@ -8,7 +8,8 @@ describe('HomecarouselComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomecarouselComponent]
+      declarations: [HomecarouselComponent],
+      providers: []
     });
     fixture = TestBed.createComponent(HomecarouselComponent);
     component = fixture.componentInstance;
