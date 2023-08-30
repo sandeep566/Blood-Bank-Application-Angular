@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {JWTTokenService} from "../../../services/Jwt-Service/jwttoken.service";
-import {Router} from "@angular/router";
 import {Donor} from "../../../Model/DonorModel";
 import {PageModel} from "../../../Model/DonorPageModel";
 import { environment } from 'src/environments/environment';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,11 @@ export class DonorService {
 
   constructor(private http:HttpClient,
               private jwtService:JWTTokenService,
-              private router:Router) {
+              private alertService:AlertService) {
     this.getAllDonors();
   }
+
+  alert = false;
 
   userId = this.jwtService.getId();
 
@@ -30,15 +32,30 @@ export class DonorService {
     const {bloodGroup , ...newData} = donorObj;
     newData.phoneNo = phoneNo;
     newData.aadharNo = aadhaarNo;
-    console.log(newData);
+    // console.log(newData);
     this.http.post(environment.apiUrl+"/donor/add/"+this.userId+"?bloodGroup="+group,newData)
       .subscribe(
         () =>{
-          alert("Donor Registered Successfully");
+          // alert("Donor Registered Successfully");
+          this.alert = true
+          this.alertService.message = "Donor Registered Successfully";
+          this.alertService.isError = false;
+          setTimeout(()=>{
+            this.alert = false;
+            this.alertService.message = "";
+            this.alertService.isError = false;
+          },3000)
           location.reload();
         },
         (error) => {
-          alert(error.error.message);
+          this.alert = true
+          this.alertService.message = error.error.message;
+          this.alertService.isError = true;
+          setTimeout(()=>{
+            this.alert = false;
+            this.alertService.message = "";
+            this.alertService.isError = false;
+          },3000)
         }
       );
   }
@@ -67,27 +84,64 @@ export class DonorService {
     const group = updateDonorForm.bloodGroup;
     const {bloodGroup , ...newData} = updateDonorForm;
     newData.phoneNo = Number(updateDonorForm.phoneNo)
-    newData.aadharNo = Number(updateDonorForm.aadhaarNo);
-    console.log(newData)
-    this.http.put(environment.apiUrl+"/donor/update"+"?bloodGroup="+group,newData)
+    newData.aadhaarNo = Number(updateDonorForm.aadhaarNo);
+    // console.log(newData)
+    this.http.put(environment.apiUrl+"/donor/update"+"?bloodGroup="+group,newData,{
+      responseType:'text'
+    })
       .subscribe(
         (res) =>{
-          console.log(res);
+          this.alert = true
+          this.alertService.message = "Donor Updated";
+          this.alertService.isError = false;
+          // console.log(res)
+          setTimeout(()=>{
+            this.alert = false;
+            this.alertService.message = "";
+            this.alertService.isError = false;
+            location.reload();
+          },3000)
           // location.reload();
         },
-        error => {
-          console.log(error)
+        (error) => {
+          this.alert = true
+          this.alertService.message = error.error.message;
+          this.alertService.isError = true;
+          setTimeout(()=>{
+            this.alert = false;
+            this.alertService.message = "";
+            this.alertService.isError = false;
+          },3000)
         }
       );
   }
 
 
   deleteDonorById(id:number){
-    this.http.delete(environment.apiUrl+"/donor/delete/"+id).subscribe(
+    this.http.delete(environment.apiUrl+"/donor/delete/"+id,{
+      responseType:'text'
+    }).subscribe(
       () => {
-        location.reload();
+          this.alert = true
+          this.alertService.message = "Donor Deleted";
+          this.alertService.isError = false;
+          setTimeout(()=>{
+            this.alert = false;
+            this.alertService.message = "";
+            this.alertService.isError = false;
+            location.reload();
+          },2000)
       },
-      (err) => console.log(err)
+      (err) => {
+          this.alert = true
+          this.alertService.message = err.error.message;
+          this.alertService.isError = true;
+          setTimeout(()=>{
+            this.alert = false;
+            this.alertService.message = "";
+            this.alertService.isError = false;
+          },3000)
+      }
     );
   }
 

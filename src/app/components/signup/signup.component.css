@@ -8,3 +8,8 @@
   color: red;
   font-size: small;
 }
+.message{
+  position: fixed;
+  bottom: 5%;
+  right: 4%;
+}

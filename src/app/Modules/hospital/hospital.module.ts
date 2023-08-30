@@ -9,7 +9,7 @@ import { HospitalProfileComponent } from './hospital-components/hospital-profile
 import { HospitalRequestsComponent } from './hospital-components/hospital-requests/hospital-requests.component';
 import { AcceptedRequestsComponent } from './hospital-components/accepted-requests/accepted-requests.component';
 import { RouterModule } from '@angular/router';
-import { AlertComponent } from './hospital-components/alert/alert.component';
+import { AlertModule } from 'src/app/alert/alert.module';
 
 
 
@@ -21,14 +21,14 @@ import { AlertComponent } from './hospital-components/alert/alert.component';
     HospitalProfileComponent,
     HospitalRequestsComponent,
     AcceptedRequestsComponent,
-    AlertComponent,
   ],
   imports: [
     CommonModule,
     HospitalRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    AlertModule
   ]
 })
 export class HospitalModule { }

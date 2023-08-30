@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../services/login-service/login.service";
 import { CustomValidators } from '../signup/CustomValidators';
+import { AlertService } from 'src/app/services/alert.service';
+
 
 
 
@@ -12,9 +14,11 @@ import { CustomValidators } from '../signup/CustomValidators';
 })
 export class LoginComponent {
 
-  constructor(private loginService: LoginService) {
+  constructor(public loginService: LoginService,private alertService:AlertService) {
   }
 
+
+  alert = false;
 
   otp:string = "";
   forgetPassword = false;
@@ -67,22 +71,44 @@ export class LoginComponent {
     .subscribe(
       res => {
         this.passwordForm.controls['otp'].setValue(res.otp)
-        console.log(this.otp)
+      },(error) => {
+        this.alert = true;
+        this.alertService.message = "UserName doesnot exists";
+        this.alertService.isError = true;
+        setTimeout(()=>{
+          this.alert = false
+          this.alertService.message = ""
+          this.alertService.isError = false;
+          location.reload();
+        },2000)
       }
-
-    )
+    );
   }
+
 
 
   resetPassword(passwordForm:any){
     this.loginService.resetPassword(passwordForm)
     .subscribe(
       (res) => {
-        console.log(res)
-        alert("password changed successfully");
-        location.reload();
-      },(error) => {
-        console.error('Error:', error);
+        this.alert = true;
+        this.alertService.message = "Password changed successfully"
+        this.alertService.isError = false;
+        setTimeout(()=>{
+          this.alert = false;
+          this.alertService.message = "";
+          this.alertService.isError = false;
+          location.reload();
+        },2000)
+      },(err) => {
+        this.alert = true;
+        this.alertService.message = err.error.message;
+        this.alertService.isError = false;
+        setTimeout(()=>{
+          this.alert = false;
+          this.alertService.message = "";
+          this.alertService.isError = false;
+        },2000)
       }
     )
   }

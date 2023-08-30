@@ -57,7 +57,7 @@
     <div class="col-6" style="height: 500px">
       <div>
         <h1 class="bg-body-secondary align-items-center p-3" style="border-radius: 8px;text-align: center;color: indianred">New Here? Signup</h1>
-        <img Src="https://www.geetanjalihospital.co.in/images/blood-bank.jpg" width="100%" alt="bb-2">
+        <img [src]="imageUrl" width="100%" alt="bb-2">
       </div>
     </div>
   </div>
@@ -65,3 +65,4 @@
 <!--<footer style="background-color: indianred;display: block;margin-top: 0px;padding: 0.5rem">-->
 <!--  <p style="text-align: center">©2019 BloodBank.com - All rights reserved.</p>-->
 <!--</footer>-->
+<app-alert [hidden]="!signUpService.alert"></app-alert>

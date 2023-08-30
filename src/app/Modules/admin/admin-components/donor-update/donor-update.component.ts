@@ -63,7 +63,7 @@ export class DonorUpdateComponent implements OnInit{
 
   updateDonor(){
     this.donorService.updateDonorById(this.myForm.value);
-    location.reload();
+    // location.reload();
   }
 
 

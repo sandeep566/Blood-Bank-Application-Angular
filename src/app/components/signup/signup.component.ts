@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { SignupService } from "../../services/signup-service/signup.service";
 import { CustomValidators } from "./CustomValidators";
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,8 +11,11 @@ import { CustomValidators } from "./CustomValidators";
 })
 export class SignupComponent {
 
-  constructor(private signUpService:SignupService) {
+  constructor(public signUpService:SignupService,public alertService:AlertService) {
   }
+
+
+  imageUrl = "https://www.geetanjalihospital.co.in/images/blood-bank.jpg";
 
   show_button: Boolean = false;
 

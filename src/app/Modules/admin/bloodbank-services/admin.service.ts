@@ -5,6 +5,7 @@ import { firstValueFrom } from 'rxjs';
 import { BloodBankProfile } from 'src/app/Model/BloodBankProfile';
 import { BloodQuantityLevel } from 'src/app/Model/BloodQuantityLevel';
 import { JWTTokenService } from 'src/app/services/Jwt-Service/jwttoken.service';
+import { AlertService } from 'src/app/services/alert.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,8 +13,9 @@ import { environment } from 'src/environments/environment';
 })
 export class AdminService {
 
-  constructor(private http:HttpClient,private router:Router,private jwtService:JWTTokenService) { }
+  constructor(private http:HttpClient,private router:Router,private jwtService:JWTTokenService,private alertService:AlertService) { }
 
+  alert = false;
   bloodQuantity:BloodQuantityLevel;
 
   signUp(data:any){
@@ -25,17 +27,32 @@ export class AdminService {
     .subscribe(
       () => {
         // Handle successful response
-        alert("Account created successfully")
-        this.router.navigate(['/blood-bank/home']);
+        this.alert = true;
+        this.alertService.message = "Account created successfully";
+        this.alertService.isError = false;
+        setTimeout(() => {
+          this.alert = false;
+          this.alertService.message = "";
+          this.alertService.isError = false;
+          this.router.navigate(['/blood-bank/home']);
+        },2000);
       },
       (error) => {
-        if(error.status == 0){
-          alert("Server Down")
+        if(error.status === 0){
+          this.alert = true
+          this.alertService.message = "server down";
+          this.alertService.isError = true;
         }
         else{
-          alert(error.error.message);
+            this.alert = true
+            this.alertService.message = error.error.message;
+            this.alertService.isError = true;
         }
-        // console.error(error);
+        setTimeout(()=>{
+          this.alert = false;
+          this.alertService.message = "";
+          this.alertService.isError = false;
+        },3000)
       }
     );
   }
@@ -67,8 +84,34 @@ export class AdminService {
     this.http.put(environment.apiUrl+"/bloodBank/update",formValues)
     .subscribe(
       res => {
-        console.log(res)
-        location.reload();
+        this.alert = true;
+        this.alertService.message = "Profile Updated Successfully";
+        this.alertService.isError = false;
+        setTimeout(() => {
+          this.alert = false;
+          this.alertService.message = "";
+          this.alertService.isError = false;
+          location.reload();
+        },2000);
+      }
+    )
+  }
+
+  updateBloodLevels(formValues:any){
+    const bloodBankId = this.jwtService.getId();
+    this.http.put(environment.apiUrl + "/bloodBank/updateBloodQuantities/"+bloodBankId+"?bloodGroup="+formValues.bloodGroup+"&quantity="+formValues.quantity,"")
+    .subscribe(
+      res => {
+        this.alert = true;
+        this.alertService.message = "Blood levels updated successfully";
+        this.alertService.isError = false;
+
+        setTimeout(() => {
+          this.alert = false;
+          this.alertService.message = "";
+          this.alertService.isError = false;
+          location.reload();
+        },2000);
       }
     )
   }

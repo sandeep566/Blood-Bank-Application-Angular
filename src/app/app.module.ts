@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { HomecarouselComponent } from './components/homecarousel/homecarousel.component';
 import { JwtInterceptorProvider} from "./services/api-service/jwt.interceptor";
+import { AlertModule } from './alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { JwtInterceptorProvider} from "./services/api-service/jwt.interceptor";
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AlertModule
   ],
   providers: [LoginComponent, JwtInterceptorProvider],
   exports: [

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-alert',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AlertComponent {
 
+  constructor(public alertService:AlertService){}
+  
 }

@@ -10,7 +10,7 @@ import { DonorService } from "../../bloodbank-services/donor.service";
 export class DonorRegistrationComponent {
 
 
-  constructor(private donorService:DonorService) {
+  constructor(public donorService:DonorService) {
   }
 
 

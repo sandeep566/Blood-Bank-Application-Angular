@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit{
   bloodBankProfile:BloodBankProfile;
 
 
-  constructor(private adminService:AdminService){
+  constructor(public adminService:AdminService){
     this.profileForm = new FormGroup({
       bloodBankName: new FormControl(),
       address: new FormControl(),

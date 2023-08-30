@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HospitalService } from '../../hospital-services/hospital.service';
 import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-hospital-home',
@@ -10,7 +11,7 @@ import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
 })
 export class HospitalHomeComponent {
 
-  constructor(private hospitalService:HospitalService){
+  constructor(private hospitalService:HospitalService,private alertService:AlertService){
     this.getBloodRequests();
   }
 
@@ -61,12 +62,31 @@ export class HospitalHomeComponent {
     return this.requestForm.get('priority')
   }
 
+  alert = false;
   postRequest(data:any){
     this.hospitalService.addRequest(data)
     .subscribe(
       (res) => {
-        console.log(res)
-        location.reload();
+        this.alert = true;
+        this.alertService.message = "Request Posted";
+        this.alertService.isError = false;
+
+        setTimeout(() => {
+          this.alert = false;
+          this.alertService.message = "";
+          this.alertService.isError = false;
+          location.reload();
+        },3000)
+      },(error) => {
+        this.alert = true;
+        this.alertService.message = error.error.message;
+        this.alertService.isError = true;
+        setTimeout(() => {
+          this.alert = false;
+          this.alertService.message = "";
+          this.alertService.isError = false;
+          location.reload();
+        },3000)
       }
     );
   }

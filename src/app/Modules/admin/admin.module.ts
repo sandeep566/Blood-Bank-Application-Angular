@@ -15,6 +15,7 @@ import { ProfileComponent } from './admin-components/profile/profile.component';
 import { SuppliedRequestsComponent } from './admin-components/supplied-requests/supplied-requests.component';
 import { RouterModule } from '@angular/router';
 import { AdminSignUpFormComponent } from './admin-components/admin-sign-up-form/admin-sign-up-form.component';
+import { AlertModule } from 'src/app/alert/alert.module';
 
 
 
@@ -42,7 +43,8 @@ import { AdminSignUpFormComponent } from './admin-components/admin-sign-up-form/
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        AlertModule
     ]
 })
 export class AdminModule { }

@@ -5,6 +5,7 @@ import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
 import { BloodQuantityLevel } from "../../../../Model/BloodQuantityLevel";
 import { BloodRequestService } from '../../bloodbank-services/blood-request.service';
 import { AdminService } from '../../bloodbank-services/admin.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-bar-chart',
@@ -14,7 +15,7 @@ export class BarChartComponent implements AfterViewInit {
   @ViewChild('barChartCanvas') private barChartCanvasRef: ElementRef;
 
   bloodLevel:BloodQuantityLevel;
-  constructor(private adminService:AdminService,private bloodRequestService:BloodRequestService) {
+  constructor(public adminService:AdminService,private bloodRequestService:BloodRequestService) {
     this.getAllBloodRequests();
   }
 
@@ -74,4 +75,32 @@ export class BarChartComponent implements AfterViewInit {
     ).subscribe((res) => this.bloodRequests = res);
   }
 
+  options:any[] = [
+    { label: 'A+', value: 'A_POSITIVE' },
+    { label: 'AB+', value: 'AB_POSITIVE' },
+    { label: 'B-', value: 'B_NEGATIVE' },
+    { label: 'O-', value: 'O_NEGATIVE'},
+    { label: 'AB-', value: 'AB_NEGATIVE'},
+    { label: 'B+', value: 'B_POSITIVE'},
+    { label: 'A-', value: 'A_NEGATIVE'},
+    { label: 'O+', value: 'O_POSITIVE'}
+  ]
+
+
+  bloodQuantityUpdate = new FormGroup({
+    quantity: new FormControl('',[Validators.required]),
+    bloodGroup: new FormControl('',[Validators.required])
+  });
+
+  get _quantity(){
+    return this.bloodQuantityUpdate.get('quantity');
+  }
+
+  get _bloodGroup(){
+    return this.bloodQuantityUpdate.get('bloodGroup');
+  }
+
+  updateBloodLevels(formData:any){
+    this.adminService.updateBloodLevels(formData);
+  }
 }

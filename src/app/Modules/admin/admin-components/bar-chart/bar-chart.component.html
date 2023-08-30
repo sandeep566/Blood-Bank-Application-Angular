@@ -4,6 +4,8 @@
       <div class="mx-3 mt-5" style="width: 90%; height: 90%;">
         <h2 style="text-align: center;color: #CC5546;background-color: antiquewhite;display: flex;align-items: center;">BLOOD GRAPH<img src="../../../../../assets/statistics.png" alt="" height="25px" width="25px" style="margin-left: 10px;"></h2>
         <canvas #barChartCanvas></canvas>
+        <br>
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Update Blood Quantities</button>
       </div>
     </div>
     <div class="col-6 my-5">
@@ -39,3 +41,40 @@
     </div>
   </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Update Blood Quantities</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="bloodQuantityUpdate">
+          <div class="form-group mb-3">
+            <label for="exampleFormControlSelect1">Blood Group:</label>
+            <select class="form-select form-select-md mb-3" id="exampleFormControlSelect1" formControlName="bloodGroup">
+              <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+            </select>
+            <div class="form-error text-danger" *ngIf="_bloodGroup?.errors?.['required'] && _bloodGroup?.touched">select blood group</div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput5" placeholder="350"  formControlName="quantity">
+            <label for="floatingInput5">Blood Quantity</label>
+            <div class="form-error text-danger" *ngIf="_quantity?.errors?.['required'] && _quantity?.touched">Donation Quantity is required</div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="updateBloodLevels(bloodQuantityUpdate.value)">save changes</button>
+      </div>
+    </div>
+  </div>
+  <app-alert [hidden]="!adminService.alert"></app-alert>
+</div>
+
+
+

@@ -1,4 +1,4 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DonorService} from "../../bloodbank-services/donor.service";
 import {Donor} from "../../../../Model/DonorModel";
 
@@ -16,7 +16,7 @@ interface CheckboxItem {
 })
 export class DonorsTableComponent implements OnInit{
 
-  constructor(private donorService:DonorService) {
+  constructor(public donorService:DonorService) {
 
   }
 
@@ -94,8 +94,8 @@ export class DonorsTableComponent implements OnInit{
   updateDonor(donor:any){
     this.showUpdatePopUp();
     this.donorToUpdate = donor;
-    console.log(donor);
   }
+
   showUpdatePopUp(){
     this.updatePopUp = true;
   }
@@ -174,7 +174,7 @@ export class DonorsTableComponent implements OnInit{
 
   deleteDonor(id:number){
     this.donorService.deleteDonorById(id);
-    location.reload();
+    // location.reload();
   }
 
 

@@ -15,7 +15,7 @@ export class JWTTokenService {
 
   constructor(private localStorageService:LocalStorageService) {
    this.setToken(localStorageService.get("jwt")?<string>localStorageService.get("jwt"):null);
-    console.log(this.jwtToken)
+    // console.log(this.jwtToken)
   }
 
   setToken(token: string|null) {

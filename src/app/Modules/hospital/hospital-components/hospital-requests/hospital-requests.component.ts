@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BloodRequestModel } from 'src/app/Model/BloodRequestModel';
 import { HospitalService } from '../../hospital-services/hospital.service';
 import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/services/alert.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
 })
 export class HospitalRequestsComponent implements OnInit{
 
-  constructor(private hospitalService:HospitalService,private fb: FormBuilder){
+  constructor(private hospitalService:HospitalService,private fb: FormBuilder,private alertService:AlertService){
     // this.getAllRequests();
     this.getPageRequests(this.requestedPage);
   }
@@ -74,8 +75,26 @@ export class HospitalRequestsComponent implements OnInit{
     this.hospitalService.updateRequest(updateRequestForm)
     .subscribe(
       res => {
-        console.log(res)
-        location.reload();
+        this.alert = true;
+        this.alertService.message = "Request Updated Successfully";
+        this.alertService.isError = false;
+
+        setTimeout(() => {
+          this.alert = false;
+          this.alertService.message = "";
+          this.alertService.isError = false;
+          location.reload();
+        },2000)
+      },(error) => {
+        this.alert = true;
+        this.alertService.message = error.error.message;
+        this.alertService.isError = true;
+        setTimeout(() => {
+          this.alert = false;
+          this.alertService.message = "";
+          this.alertService.isError = false;
+          location.reload();
+        },2000)
       }
     )
   }
@@ -91,15 +110,17 @@ export class HospitalRequestsComponent implements OnInit{
     this.hospitalService.deleteRequest(id)
     .subscribe(
       res => {
-        console.log(res)
         this.alert = true;
-
+        this.alertService.message = "Request Deleted Successfully";
+        this.alertService.isError = false;
         this.bloodRequests.splice(this.bloodRequests.indexOf(this.bloodRequests.find((value)=>value.bloodRequestId===id) as BloodRequestModel),1);
         if( this.bloodRequests.length %  this.size == 0){
           this.getPageRequests(this.requestedPage - 1)
           this.requestedPage -= 1;
         }
         setTimeout(() =>{
+          this.alert = false;
+          this.alertService.message = "";
           this.alert = false
         },3000)
       }
