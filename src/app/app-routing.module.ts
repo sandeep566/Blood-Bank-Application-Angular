@@ -6,6 +6,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {hospitalAuthGuard} from "./services/Auth-Service/hospital-auth.guard";
 import {bloodBankAuthGuard} from "./services/Auth-Service/blood-bank-auth.guard";
 import {PagenotfoundComponent} from "./components/pagenotfound/pagenotfound.component";
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {

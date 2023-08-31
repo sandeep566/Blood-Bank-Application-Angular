@@ -1,6 +1,5 @@
 import {  NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +14,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { HomecarouselComponent } from './components/homecarousel/homecarousel.component';
 import { JwtInterceptorProvider} from "./services/api-service/jwt.interceptor";
 import { AlertModule } from './alert/alert.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { AlertModule } from './alert/alert.module';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    AlertModule
+    AlertModule,
+    CommonModule
   ],
   providers: [LoginComponent, JwtInterceptorProvider],
   exports: [
