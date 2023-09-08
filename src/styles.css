@@ -3,6 +3,12 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-
+.heading{
+  text-align: center;
+  color: #CC5546;
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+}
 
 

@@ -105,8 +105,9 @@ export class DonorService {
         },
         (error) => {
           this.alert = true
-          this.alertService.message = error.error.message;
+          this.alertService.message = error.error.substr(12,25);
           this.alertService.isError = true;
+          console.log(error)
           setTimeout(()=>{
             this.alert = false;
             this.alertService.message = "";

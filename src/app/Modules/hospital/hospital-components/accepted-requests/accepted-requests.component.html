@@ -39,7 +39,7 @@
         <td>{{bloodRequest.bloodGroup}}</td>
         <td>{{bloodRequest.priority}}</td>
         <td>{{bloodRequest.quantity}}</td>
-        <td [ngClass]="bloodRequest.supplied == true? 'bg-success':'bg-danger'"></td>
+        <td *ngIf="bloodRequest.supplied == true">Yes</td>
       </tr>
     </tbody>
   </table>

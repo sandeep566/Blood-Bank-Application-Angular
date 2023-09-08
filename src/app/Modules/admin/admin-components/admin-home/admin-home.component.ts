@@ -10,5 +10,6 @@ export class AdminHomeComponent{
   constructor() {
   }
 
-
+  bloodBankLogo = "../../../../../assets/Blood Bank logo 2022-04_1.png";
+  bloodBankTitle = "../../../../../assets/bloodbank-title.jpg";
 }

@@ -163,8 +163,9 @@ export class HospitalRequestsComponent implements OnInit{
   }
 
   getPageRequests(requestedPage:number){
-    if(requestedPage == 1 || this.totalPages == 1){
+    if(requestedPage == 1 || this.totalPages == 1 || this.requestedPage <= 0){
       requestedPage = 0;
+      this.requestedPage = 1;
     }else if(requestedPage > 1 && requestedPage <= this.totalPages){
       requestedPage -= 1
     }else if(requestedPage > this.totalPages){

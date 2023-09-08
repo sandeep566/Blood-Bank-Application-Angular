@@ -15,6 +15,8 @@ export class HospitalHomeComponent {
     this.getBloodRequests();
   }
 
+  bloodBankLogo = "../../../../../assets/Blood Bank logo 2022-04_1.png";
+
   bloodRequests:BloodRequestModel[] = [];
 
   options:any[] = [

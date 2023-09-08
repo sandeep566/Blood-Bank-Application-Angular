@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let donor of donors; let i = index">
+    <tr *ngFor="let donor of donors.reverse(); let i = index">
       <td>{{i + 1}}</td>
       <td>{{donor.donorName}}</td>
       <td>{{donor.age}}</td>

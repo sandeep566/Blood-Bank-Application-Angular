@@ -1,3 +1,8 @@
 .form-error{
   font-size: small;
 }
+.donor-heading{
+  text-align: center;
+  color: #CC5546;
+  background-color: antiquewhite;
+}

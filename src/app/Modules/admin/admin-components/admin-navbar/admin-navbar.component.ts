@@ -12,6 +12,9 @@ export class AdminNavbarComponent {
     this.userName = this.jwtService.getUser();
   }
 
+
+  bloodBankLogo = "../../../assets/blood-type-b.png";
+
   userName:string | null;
 
   logout(){

@@ -1,5 +1,6 @@
 <app-hospital-navbar></app-hospital-navbar>
-<div class="container-fluid mt-3" id="hos-img">
+<div class="container-fluid mt-2 " style="display: flex; justify-content:space-evenly;background-color: antiquewhite; align-items:center;">
+  <img [src]="bloodBankLogo" width="500px" style="display: block;">
   <img  src="../../../../../assets/hospital-home.png" alt="">
 </div>
 
@@ -21,7 +22,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let bloodRequest of bloodRequests.slice(-10); let i = index">
+          <tr *ngFor="let bloodRequest of bloodRequests.slice(-10).reverse(); let i = index">
             <td>{{i+1}}</td>
             <td>{{bloodRequest.patientName}}</td>
             <td>{{bloodRequest.age}}</td>

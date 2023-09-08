@@ -27,4 +27,7 @@
   padding: 8px;
   border: 1px solid #ccc;
 }
-
+.donor-details-heading{
+  color: #CC5546;
+  background-color: antiquewhite;
+}

@@ -2,7 +2,7 @@
   <div class="row" style="height: 500px">
     <div class="col-7">
       <div class="mt-3">
-        <h2 style="text-align: center;color: #CC5546;background-color: antiquewhite">DONOR DETAILS</h2>
+        <h2 class="donor-heading">DONOR DETAILS</h2>
         <app-donor-details></app-donor-details>
       </div>
     </div>
@@ -11,7 +11,7 @@
         <div class="card card-border border-black mb-4">
           <div class="card-body">
             <div class="h2-login mb-5">
-              <h2 style="text-align: center;color: #CC5546;background-color: antiquewhite; display: flex; align-items: center;">DONOR REGISTRATION <img src="../../../../../assets/clipboard.png" alt="" height="40px" width="40px"></h2>
+              <h2 class="heading">DONOR REGISTRATION <img src="../../../../../assets/clipboard.png" alt="" height="40px" width="40px"></h2>
             </div>
             <div>
               <form [formGroup]="donorRegistration" (ngSubmit)="donorData(donorRegistration.value)">
