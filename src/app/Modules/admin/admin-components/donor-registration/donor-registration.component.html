@@ -49,6 +49,7 @@
                   <label for="floatingInput5">Donation Quantity</label>
                   <div class="form-error text-danger" *ngIf="donationQuantity?.errors?.['required'] && donationQuantity?.touched">Donation Quantity is required</div>
                   <div class="form-error text-danger" *ngIf="donationQuantity?.errors?.['max'] && donationQuantity?.touched">Donation Quantity should be below 450ml</div>
+                  <div class="form-error text-danger" *ngIf="donationQuantity?.errors?.['min'] && donationQuantity?.touched">Donation Quantity should be above 0 ml</div>
                 </div>
                 <div class="form-group mb-3">
                   <label for="exampleFormControlSelect1">Blood Group:</label>

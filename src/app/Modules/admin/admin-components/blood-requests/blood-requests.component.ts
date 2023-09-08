@@ -40,11 +40,11 @@ export class BloodRequestsComponent {
 
 
   searchByName(){
-    // this.bloodRequestService.getAllBloodRequests()
-    // .subscribe(
-    //   res => this.allBloodRequests = res
-    // )
-    return this.bloodRequests.filter(request => request.hospital.hospitalName.includes(this.searchTextControl));
+    this.bloodRequestService.getAllBloodRequests()
+    .subscribe(
+      res => this.allBloodRequests = res
+    )
+    return this.allBloodRequests.filter(request => request.hospital.hospitalName.includes(this.searchTextControl.toLowerCase()));
   }
 
 

@@ -150,7 +150,7 @@ export class HospitalRequestsComponent implements OnInit{
     .subscribe(
       res => this.allBloodRequests = res
     )
-    return this.allBloodRequests.filter(request => request.patientName.includes(this.search));
+    return this.allBloodRequests.filter(request => request.patientName.includes(this.search.toLowerCase()));
   }
 
 

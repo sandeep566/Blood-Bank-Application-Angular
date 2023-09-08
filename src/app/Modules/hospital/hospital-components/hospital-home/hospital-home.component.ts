@@ -39,7 +39,7 @@ export class HospitalHomeComponent {
   requestForm = new FormGroup({
     name: new FormControl('',[Validators.required]),
     age: new FormControl('',[Validators.required,Validators.max(90),Validators.min(1)]),
-    quantity: new FormControl('',[Validators.required]),
+    quantity: new FormControl('',[Validators.required,Validators.min(1)]),
     bloodGroup: new FormControl('',[Validators.required]),
     priority: new FormControl('',[Validators.required])
   })

@@ -106,7 +106,7 @@ export class DonorsTableComponent implements OnInit{
     .subscribe(
       res => this.allDonors = res
     )
-    return this.allDonors.filter(request => request.donorName.includes(this.search));
+    return this.allDonors.filter(request => request.donorName.includes(this.search.toLowerCase()));
   }
 
 

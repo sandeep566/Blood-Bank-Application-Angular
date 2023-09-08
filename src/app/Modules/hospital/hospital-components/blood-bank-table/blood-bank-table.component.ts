@@ -33,7 +33,7 @@ export class BloodBankTableComponent {
     .subscribe(
       res => this.allBloodBanks = res
     )
-    return this.allBloodBanks.filter(request => request.bloodBankName.includes(this.search));
+    return this.allBloodBanks.filter(request => request.bloodBankName.includes(this.search.toLowerCase()));
   }
 
 

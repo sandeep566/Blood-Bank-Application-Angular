@@ -20,7 +20,7 @@ export class DonorRegistrationComponent {
     aadhaarNo: new FormControl('',[Validators.required,Validators.pattern("\\d{4}\\d{4}\\d{4}$")]),
     address: new FormControl('',[Validators.required]),
     phoneNo: new FormControl('',[Validators.required,Validators.pattern("^(\\+91|\\+91\\-|0)?[789]\\d{9}$")]),
-    donationQuantity: new FormControl('',[Validators.required,Validators.max(450)]),
+    donationQuantity: new FormControl('',[Validators.required,Validators.max(450),Validators.min(1)]),
     bloodGroup: new FormControl('',[Validators.required])
   });
 
